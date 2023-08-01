@@ -118,6 +118,3 @@
     - tableau_initial_user_cmd.rc != 0
     - not "The server is already initialized" in tableau_initial_user_cmd.stderr
   changed_when: tableau_initial_user_cmd.rc == 0
-
-
-  /opt/tableau/tableau_server/packages/customer-bin.20231.23.0511.1508/tsm initialize --start-server --request-timeout 1800 --username tabadmin --password azertyuiop
