@@ -47,6 +47,8 @@ tsm_registration:
   department: Engineering
   first_name: Jason
   email: jsmith@example.com
+  company_employees: 1
+  opt_in: false
 tsm_identity_store_type: local
 
 tsm_deploy_examples: false
