@@ -1,7 +1,6 @@
 ---
 
-- hosts: tableau
-  #remote_user: vagrant
+- hosts: localhost
   become: yes
   roles:
     - tableau

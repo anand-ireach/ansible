@@ -5,9 +5,9 @@
 ###
 
 # Version
-tableau_version_major: 2018
-tableau_version_minor: 3
-tableau_version_patch: 1
+tableau_version_major: 2023
+tableau_version_minor: 1
+tableau_version_patch: 2
 
 # Debian
 tableau_deb_package: "tableau-server-{{ tableau_version_major }}-{{ tableau_version_minor }}-{{ tableau_version_patch }}_amd64.deb"
