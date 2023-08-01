@@ -28,10 +28,18 @@
     - not tsm_licence in tableau_list_licenses.stdout
   register: tableau_set_licence_status
 
+- name: TABLEAU CONFIG | Print tableau_set_licence_status
+  debug:
+    msg: "{{ tableau_set_licence_status }}"
+
 - name: TABLEAU CONFIG | Get free trial Tableau Server licence
   command: "{{ TSM_EXECUTABLE }}/tsm licenses activate -t --username {{ tableau_user }} --password {{ tableau_password }}"
   when: tsm_licence == ""
   register: tableau_set_free_licence_status
+
+- name: TABLEAU CONFIG | Print tableau_set_free_licence_status
+  debug:
+    msg: "{{ tableau_set_free_licence_status }}"
 
 - name: TABLEAU CONFIG | Copy Tableau Server registration file
   template:
@@ -61,6 +69,10 @@
     - tableau_list_identity_store.stdout_lines | length == 0
   register: tableau_set_identity_store_status
 
+- name: TABLEAU CONFIG | Print tableau_set_identity_store_status
+  debug:
+    msg: "{{ tableau_set_identity_store_status }}"
+
 - name: TABLEAU CONFIG | Check deploy example status
   command: "{{ TSM_EXECUTABLE }}/tsm configuration get -k install.component.samples --username {{ tableau_user }} --password {{ tableau_password }}"
   changed_when: false
@@ -73,6 +85,10 @@
     - not tsm_deploy_examples
     - not "false" in tableau_deploy_examples_status.stdout
   register: tableau_set_example_status
+
+- name: TABLEAU CONFIG | Print tableau_set_example_status
+  debug:
+    msg: "{{ tableau_set_example_status }}"
 
 - name: TABLEAU CONFIG | Apply pending changes
   command: "{{ TSM_EXECUTABLE }}/tsm pending-changes apply --username {{ tableau_user }} --password {{ tableau_password }}"
