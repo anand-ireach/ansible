@@ -2,8 +2,12 @@
 
 - name: TABLEAU USER | Create Tableau Server admin group
   group:
-    name: "{{ tableau_user }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - tabadmin
+    - tableau
+    - tsmadmin
 
 - name: TABLEAU USER | Create Tableau Server admin user
   user:

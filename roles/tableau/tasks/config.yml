@@ -5,6 +5,12 @@
   register: tsm
   changed_when: false
 
+- name: TABLEAU CONFIG | Print TSM-executables
+  debug:
+    msg: "{{ item }}"
+  with_items:
+    - "{{ tsm }}"
+
 - name: TABLEAU CONFIG | Set facts for Tableau Server Manager executable
   set_fact:
     TSM_EXECUTABLE: "{{ tsm_packages }}/{{ item.stdout }}"
